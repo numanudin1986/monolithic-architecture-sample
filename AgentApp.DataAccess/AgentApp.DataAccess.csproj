@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>AgentApp.DataAccess</AssemblyName>
+    <RootNamespace>AgentApp.DataAccess</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DataBaseContext\**" />
+    <EmbeddedResource Remove="DataBaseContext\**" />
+    <None Remove="DataBaseContext\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Interfaces\IAgentRecordRepository.cs" />
+    <Compile Remove="Interfaces\ILoggingRespository.cs" />
+    <Compile Remove="Interfaces\ITblRawDatumRespository.cs" />
+    <Compile Remove="Interfaces\ITblUserRespository.cs" />
+    <Compile Remove="Repositories\AgentRecordRespository.cs" />
+    <Compile Remove="Repositories\LoggingRespository.cs" />
+    <Compile Remove="Repositories\TblRawDatumRespository.cs" />
+    <Compile Remove="Repositories\TblUserRespository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+  </ItemGroup>
+
+</Project>

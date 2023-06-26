@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>AgentApp.BusinessOperation</AssemblyName>
+    <RootNamespace>AgentApp.BusinessOperation</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AgentApp.Components\AgentApp.Components.csproj" />
+    <ProjectReference Include="..\AgentApp.DataAccess\AgentApp.DataAccess.csproj" />
+    <ProjectReference Include="..\AgentApp.ViewModels\AgentApp.DTO.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,57 @@
+﻿<!-- Javascript -->
+<script src="../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+
+<script src="../assets/bundles/libscripts.bundle.js"></script>
+<script src="../assets/bundles/vendorscripts.bundle.js"></script>
+
+<script src="../assets/bundles/chartist.bundle.js"></script>
+<script src="../assets/bundles/knob.bundle.js"></script> <!-- Jquery Knob-->
+<script src="../assets/bundles/flotscripts.bundle.js"></script> <!-- flot charts Plugin Js -->
+<script src="../assets/vendor/toastr/toastr.js"></script>
+<script src="../assets/vendor/flot-charts/jquery.flot.selection.js"></script>
+
+<script src="../assets/vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script> <!-- Bootstrap Colorpicker Js -->
+<script src="../assets/vendor/jquery-inputmask/jquery.inputmask.bundle.js"></script> <!-- Input Mask Plugin Js -->
+<script src="../assets/vendor/jquery.maskedinput/jquery.maskedinput.min.js"></script>
+<script src="../assets/vendor/multi-select/js/jquery.multi-select.js"></script> <!-- Multi Select Plugin Js -->
+<script src="../assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="../assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.js"></script> <!-- Bootstrap Tags Input Plugin Js -->
+<script src="../assets/vendor/nouislider/nouislider.js"></script> <!-- noUISlider Plugin Js -->
+
+
+
+<script src="../assets/bundles/mainscripts.bundle.js"></script>
+<script src="../assets/js/index.js"></script>
+
+<script src="../assets/vendor/jquery-validation/jquery.validate.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.sidebar-nav li').removeClass('active');
+
+        // Highlight parent menu item.
+        $('li a[href="' + this.location.pathname + '"]').parent().parent().addClass('in')
+        $('ul a[href="' + this.location.pathname + '"]').parents('li').addClass('active')
+        //  $('ul a[href="' + this.location.pathname + '"]').parents('li').find('span.arrow').addClass('open');
+    })
+    function showProcessing(btnId) {
+        $("#" + btnId).hide();
+        $("#showButtonLoading").show();
+        $("#loading").show();
+    }
+    function hideProcessing(btnId, _IsValid, Msg, FormId="") {
+        if (_IsValid) {
+            toastr.success(Msg);
+            $("#" + FormId).find('input').val('');
+            $("#" + FormId).find('input:checkbox').prop('checked', false);
+            $("#" + FormId).find('select').val('');
+        }
+        else
+            toastr.error(Msg);
+        $("#" + btnId).show();
+        $("#showButtonLoading").hide();
+        $("#loading").hide();
+    }
+
+</script>

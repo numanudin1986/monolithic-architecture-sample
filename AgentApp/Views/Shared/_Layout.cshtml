@@ -1,0 +1,38 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <title>@ViewData["Title"] - AgentApp</title>
+    <partial name="_ValidationCSSPartial" />
+    @RenderSection("CSS", required: false)
+
+</head>
+<body class="theme-cyan">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+            <div class="loader">
+                <div class="m-t-30"><img src="../assets/images/logo-icon.svg" width="48" height="48" alt="Lucid"></div>
+                <p>Please wait...</p>
+            </div>
+        </div>
+
+    <!-- Overlay For Sidebars -->
+
+    <div id="wrapper">
+        <div id="loading" style="display:none;"></div>
+        <partial name="_ViewTopBarPartial" />
+
+        <partial name="_ViewSideMenuPartial" />
+
+        <div id="main-content">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+
+    </div>
+    <partial name="_ValidationScriptsPartial" />
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+

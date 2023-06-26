@@ -1,0 +1,115 @@
+﻿@model AgentApp.DTO.CustomDTO.AgentRecordDTO;
+@{
+    ViewData["Title"] = "AddAgent";
+}
+
+<style>
+    input.error, textarea.error {
+        border: 1px dashed red;
+        font-weight: 300;
+        color: red;
+    }
+
+    label.error {
+        color: red;
+        font-size: 1rem;
+        display: block;
+        margin-top: 5px;
+    }
+
+    .required {
+        color: red;
+    }
+</style>
+
+@* Header Block *@
+<div class="block-header">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Add New Agent</h2>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
+                <li class="breadcrumb-item">Agents</li>
+                <li class="breadcrumb-item active">Add New Agent</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+@* Page Content *@
+<div class="row clearfix">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="header">
+                @*<h2>Agent Form</h2>*@
+            </div>
+            <div class="body">
+                <form id="addAgentForm">
+                    <input type="hidden" value="@ViewBag.AgentId" id="hfEncryptAgentId" />
+                    <div class="row">
+                        @* ------------------------------------Agent Name------------------------------------ *@
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Agent Name <span class="required">*</span></label>
+                                <input type="text" id="AgentName" name="AgentName" placeholder="Agent Name" class="form-control" value="@Model.AgentName">
+                            </div>
+                        </div>
+
+                        @* ------------------------------------WorkingArea------------------------------------ *@
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Working Area <span class="required">*</span></label>
+                                @{
+                                    List<SelectListItem> listItems = new List<SelectListItem>();
+                                    listItems.Add(new SelectListItem { Text = "-Select Working Area-", Value = "0", Selected = (Model.WorkingArea == "Select Working Area" ? true : false) });
+                                    listItems.Add(new SelectListItem { Text = "School", Value = "School", Selected = (Model.WorkingArea == "School" ? true : false) });
+                                    listItems.Add(new SelectListItem { Text = "University", Value = "University", Selected = (Model.WorkingArea == "University" ? true : false) });
+                                    listItems.Add(new SelectListItem { Text = "Office", Value = "Office", Selected = (Model.WorkingArea == "Office" ? true : false) });
+                                    listItems.Add(new SelectListItem { Text = "Hospital", Value = "Hospital", Selected = (Model.WorkingArea == "Hospital" ? true : false) });
+                                    <select class="form-control" asp-for="WorkingArea" name="WorkingArea" asp-items="listItems"></select>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        @* ------------------------------------Commission------------------------------------ *@
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Commission <span class="required">*</span></label>
+                                <input type="text" id="Commission" name="Commission" placeholder="Commission" class="form-control" value="@Model.Commission">
+                            </div>
+                        </div>
+                        @* ------------------------------------Phone No------------------------------------ *@
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Phone No</label>
+                                <input type="text" id="PhoneNo" name="PhoneNo" placeholder="ex: (999) 999-9999" class="form-control" value="@Model.PhoneNo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        @* ------------------------------------Country------------------------------------ *@
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Country</label>
+                                <input type="text" id="Country" name="Country" placeholder="Country" class="form-control" value="@Model.Country">
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <button type="submit" id="btnSaveAgent" class="btn btn-success"><i class='fa fa-save'></i> <span>@((string.IsNullOrEmpty(ViewBag.AgentId)) ? "Save" : "Update")</span> </button>
+                    <button type="button" id="showButtonLoading" style="display:none;" class="btn btn-primary" disabled="disabled"><i class="fa fa-spinner fa-spin"></i> <span>Loading...</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/assets/Scripts/AddNewAgent.js"></script>
+    <script src="../assets/vendor/jquery-inputmask/jquery.inputmask.bundle.js"></script> <!-- Input Mask Plugin Js -->
+}
